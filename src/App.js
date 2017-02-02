@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Subject from './Components/Subject';
 import './App.css';
 
 class App extends Component {
@@ -48,9 +48,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        {this.state.resources.map((resource) => {
-          return <a href = {resource.url}>{resource.title}</a>;
-        })}
+        <Subject subject={this.state.resources[0].subject}/>
+        <Subject subject={this.state.resources[1].subject}/>
+        <Subject subject={this.state.resources[2].subject}/>
       </div>
     );
   }
