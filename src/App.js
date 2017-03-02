@@ -43,7 +43,10 @@ class App extends Component {
                   ]}
           ]
   }
+
+
 };
+
 
 
 
@@ -51,6 +54,7 @@ class App extends Component {
   render() {
   return (
     <div>
+      <div>
        {
          this.state.resources.map((resource) => {
            return (
@@ -58,6 +62,13 @@ class App extends Component {
             )
           })
         }
+      </div>
+      <div>
+        <form>
+          <input type="text" default="placeholder"/>
+          <button>Add New Resource</button>
+        </form>
+      </div>
     </div>
     );
   }

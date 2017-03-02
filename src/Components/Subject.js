@@ -32,7 +32,7 @@ export default class Subject extends Component {
         <ul>
           {
             this.props.items.resources.map((resource) => {
-              if (this.state.isClicked = true){
+              if (this.state.isClicked === true){
                 return (
                   <li>
                     <a href={resource.url}>{resource.title}</a>
