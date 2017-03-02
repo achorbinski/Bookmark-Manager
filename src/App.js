@@ -46,12 +46,14 @@ class App extends Component {
 };
 
   render() {
-    return (
-      <div>
-        <Subject subject={this.state.resources[0].subject}/>
-        <Subject subject={this.state.resources[1].subject}/>
-        <Subject subject={this.state.resources[2].subject}/>
-      </div>
+
+    this.state.resources.map(resource) => {
+      return (
+        <div>
+          <Subject {this.state.resources[0].subject}/>
+        </div>
+    }
+
     );
   }
 }
