@@ -18,7 +18,7 @@ class App extends Component {
                     url: "http://stack.formidable.com/es6-interactive-guide/#/"}
                   ]},
         {subject: "Week 2",
-        resource: [{title: "LearnCode Academy React Tutorial",
+        resources: [{title: "LearnCode Academy React Tutorial",
                   url: "https://www.youtube.com/watch?v=AfWYO8t7ed4"},
                   {title: "LearnCode Academy React Tutorial",
                   url: "https://www.youtube.com/watch?v=LmL0Gh193M0"},
@@ -30,9 +30,9 @@ class App extends Component {
                   url: "https://youtu.be/fd2Cayhez58"}
                 ]},
           {subject: "Week 3",
-          resource: [{title: "LearnCode Academy React Tutorial",
+          resources: [{title: "LearnCode Academy React Tutorial",
                     url: "https://www.youtube.com/watch?v=AfWYO8t7ed4"},
-                    {title: "LearnCode Academy React Tutorial",
+                    {title: " Academy React Tutorial",
                     url: "https://www.youtube.com/watch?v=LmL0Gh193M0"},
                     {title: "Thinking in React",
                     url: "https://facebook.github.io/react/docs/thinking-in-react.html"},
@@ -45,15 +45,20 @@ class App extends Component {
   }
 };
 
+
+
+
   render() {
-
-    this.state.resources.map(resource) => {
-      return (
-        <div>
-          <Subject {this.state.resources[0].subject}/>
-        </div>
-    }
-
+  return (
+    <div>
+       {
+         this.state.resources.map((resource) => {
+           return (
+          <Subject items={resource}/>
+            )
+          })
+        }
+    </div>
     );
   }
 }

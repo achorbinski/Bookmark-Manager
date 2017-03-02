@@ -6,7 +6,6 @@ export default class Subject extends Component {
 
     this.state = {
       isClicked: false,
-      newResource: 'Awesome React Tutorial',
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -26,11 +25,23 @@ export default class Subject extends Component {
   }
 
   render() {
+    console.log(this.props.items)
     return(
       <div>
         <h2 onClick={this.handleClick}>{this.props.items.subject}</h2>
+        <ul>
+          {
+            this.props.items.resources.map((resource) => {
+              if (this.state.isClicked = true){
+                return (
+                  <li>
+                    <a href={resource.url}>{resource.title}</a>
+                  </li>
+                )}
+              }
+          )}
+        </ul>
       </div>
-      <p>{this.props.subject}</p>
     )
   }
 }
