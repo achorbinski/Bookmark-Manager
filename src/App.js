@@ -43,17 +43,34 @@ class App extends Component {
                   ]}
           ]
   }
-
-
 };
 
+addResource = (subjectIndex, Resource) => {
+  const newResource = {
+    title: '',
+    url: ''
+  };
+  this.setState(this.state.resources.push(newResource))
+  };
 
 
-
+addNewSubject = () => {
+  const newSubject = {
+    subject: '',
+    resources:''
+  };
+}
 
   render() {
   return (
     <div>
+      <div>
+        <form>
+          <input type="text" placeholder="Title" />
+          <input type="text" placeholder="URL"/>
+          <button onClick={addResource()}>Add New Resource</button>
+        </form>
+      </div>
       <div>
        {
          this.state.resources.map((resource) => {
@@ -62,12 +79,6 @@ class App extends Component {
             )
           })
         }
-      </div>
-      <div>
-        <form>
-          <input type="text" default="placeholder"/>
-          <button>Add New Resource</button>
-        </form>
       </div>
     </div>
     );

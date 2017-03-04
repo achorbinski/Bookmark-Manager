@@ -41,6 +41,10 @@ export default class Subject extends Component {
               }
           )}
         </ul>
+        <form>
+          <input type="text" value={this.state.subject}></input>
+          <button onClick={this.addResource}>Add New Resource</button>
+        </form>
       </div>
     )
   }
