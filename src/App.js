@@ -49,19 +49,29 @@ class App extends Component {
 };
 
 addResource = (subjectIndex, Resource) => {
+
   const newResource = {
     title: '',
     url: ''
   };
-  this.setState(this.state.resources.push(newResource))
+
+  const tempState = this.state;
+  tempState.resources[0].resources.push(newResource);
+  this.setState(tempState);
   };
 
 
-addNewSubject = () => {
+addNewSubject = (e) => {
+  e.preventDefault();
+
   const newSubject = {
-    subject: '',
-    resources:''
+    subject: this.state.subject,
+    resources:[],
   };
+
+  const tempState = this.state;
+  tempState.resources.push(newSubject);
+  this.setState(tempState);
 }
 
 handleTyping(e) {
@@ -71,14 +81,15 @@ handleTyping(e) {
 }
 
   render() {
-    console.log(this.state)
+
+console.log(this.state);
 
   return (
     <div>
       <div>
         <form>
-          <input type="text" name="subject" onChange={this.handleTyping} placeholder="New Subject"/>
-          <button onClick={this.addResource}>Add New Subject</button>
+          <input type="text" name="subject" onChange={this.handleTyping} placeholder="New Subject" value={this.state.subject}/>
+          <button onClick={this.addNewSubject}>Add New Subject</button>
         </form>
       </div>
       <div>
