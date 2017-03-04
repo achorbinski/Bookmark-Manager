@@ -6,6 +6,8 @@ export default class Subject extends Component {
 
     this.state = {
       isClicked: false,
+      title:'',
+      url:'',
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -21,7 +23,9 @@ export default class Subject extends Component {
   }
 
   handleTyping(e) {
-    e.target.value
+    this.setState(
+      {[e.target.name]:e.target.value}
+    );
   }
 
   render() {
@@ -42,7 +46,8 @@ export default class Subject extends Component {
           )}
         </ul>
         <form>
-          <input type="text" value={this.state.subject}></input>
+          <input type="text" name="title" placeholder="Title" onChange={this.handleTyping} value={this.state.title}></input>
+          <input type="text" name="url" placeholder="URL" onChange={this.handleTyping} value={this.state.url}></input>
           <button onClick={this.addResource}>Add New Resource</button>
         </form>
       </div>

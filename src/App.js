@@ -43,6 +43,9 @@ class App extends Component {
                   ]}
           ]
   }
+
+  this.handleTyping = this.handleTyping.bind(this);
+
 };
 
 addResource = (subjectIndex, Resource) => {
@@ -61,21 +64,28 @@ addNewSubject = () => {
   };
 }
 
+handleTyping(e) {
+  this.setState(
+    {[e.target.name]:e.target.value}
+  );
+}
+
   render() {
+    console.log(this.state)
+
   return (
     <div>
       <div>
         <form>
-          <input type="text" placeholder="Title" />
-          <input type="text" placeholder="URL"/>
-          <button onClick={addResource()}>Add New Resource</button>
+          <input type="text" name="subject" onChange={this.handleTyping} placeholder="New Subject"/>
+          <button onClick={this.addResource}>Add New Subject</button>
         </form>
       </div>
       <div>
        {
          this.state.resources.map((resource) => {
            return (
-          <Subject items={resource}/>
+          <Subject items={resource} addResource={this.addResource}/>
             )
           })
         }
