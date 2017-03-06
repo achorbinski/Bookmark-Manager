@@ -5,13 +5,14 @@ export default class Subject extends Component {
     super(props)
 
     this.state = {
-      isClicked: false,
+      isClicked: true,
       title:'',
       url:'',
     }
 
     this.handleClick = this.handleClick.bind(this);
     this.handleTyping = this.handleTyping.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // event handlers
@@ -28,8 +29,19 @@ export default class Subject extends Component {
     );
   }
 
+  handleSubmit(e){
+    e.preventDefault();
+
+    const newResource = {
+      title: this.state.title,
+      url: this.state.url,
+    }
+
+    this.props.addResource(this.props.index, newResource);
+  }
+
   render() {
-    console.log(this.props.items)
+
     return(
       <div>
         <h2 onClick={this.handleClick}>{this.props.items.subject}</h2>
@@ -48,7 +60,7 @@ export default class Subject extends Component {
         <form>
           <input type="text" name="title" placeholder="Title" onChange={this.handleTyping} value={this.state.title}></input>
           <input type="text" name="url" placeholder="URL" onChange={this.handleTyping} value={this.state.url}></input>
-          <button onClick={this.addResource}>Add New Resource</button>
+          <button onClick={this.handleSubmit}>Add New Resource</button>
         </form>
       </div>
     )

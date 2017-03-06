@@ -45,18 +45,14 @@ class App extends Component {
   }
 
   this.handleTyping = this.handleTyping.bind(this);
+  this.addResource = this.addResource.bind(this);
 
 };
 
-addResource = (subjectIndex, Resource) => {
-
-  const newResource = {
-    title: '',
-    url: ''
-  };
+addResource = (index, newResource) => {
 
   const tempState = this.state;
-  tempState.resources[0].resources.push(newResource);
+  tempState.resources[index].resources.push(newResource);
   this.setState(tempState);
   };
 
@@ -82,7 +78,6 @@ handleTyping(e) {
 
   render() {
 
-console.log(this.state);
 
   return (
     <div>
@@ -94,9 +89,9 @@ console.log(this.state);
       </div>
       <div>
        {
-         this.state.resources.map((resource) => {
+         this.state.resources.map((resource, index) => {
            return (
-          <Subject items={resource} addResource={this.addResource}/>
+          <Subject items={resource} addResource={this.addResource} index={index}/>
             )
           })
         }
