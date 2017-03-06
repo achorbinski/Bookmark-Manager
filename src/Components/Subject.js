@@ -8,6 +8,7 @@ export default class Subject extends Component {
       isClicked: true,
       title:'',
       url:'',
+      deleteText:'',
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -16,6 +17,14 @@ export default class Subject extends Component {
   }
 
   // event handlers
+
+  handleDelete = (e) => {
+    e.preventDefault();
+
+    const number = this.state.deleteText - 1;
+
+    this.props.deleteResource(this.props.index, number);
+  }
 
   handleClick() {
     this.setState(prevState => ({
@@ -45,6 +54,11 @@ export default class Subject extends Component {
     return(
       <div>
         <h2 onClick={this.handleClick}>{this.props.items.subject}</h2>
+        <form>
+            <input type="text" name="title" placeholder="Title" onChange={this.handleTyping} value={this.state.title}></input>
+            <input type="text" name="url" placeholder="URL" onChange={this.handleTyping} value={this.state.url}></input>
+            <button onClick={this.handleSubmit}>Add New Resource</button>
+        </form>
         <ul>
           {
             this.props.items.resources.map((resource) => {
@@ -58,9 +72,8 @@ export default class Subject extends Component {
           )}
         </ul>
         <form>
-          <input type="text" name="title" placeholder="Title" onChange={this.handleTyping} value={this.state.title}></input>
-          <input type="text" name="url" placeholder="URL" onChange={this.handleTyping} value={this.state.url}></input>
-          <button onClick={this.handleSubmit}>Add New Resource</button>
+          <input type="text" name="deleteText" placeholder="Number" onChange={this.handleTyping} value={this.state.deleteText}></input>
+          <button onClick={this.handleDelete}>Delete</button>
         </form>
       </div>
     )

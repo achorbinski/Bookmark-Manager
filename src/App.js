@@ -57,6 +57,13 @@ addResource = (index, newResource) => {
   };
 
 
+deleteResource = (index, deleteResource) => {
+const tempState = this.state;
+tempState.resources[index].resources.splice(deleteResource, 1);
+this.setState(tempState);
+}
+
+
 addNewSubject = (e) => {
   e.preventDefault();
 
@@ -91,7 +98,7 @@ handleTyping(e) {
        {
          this.state.resources.map((resource, index) => {
            return (
-          <Subject items={resource} addResource={this.addResource} index={index}/>
+          <Subject items={resource} addResource={this.addResource} index={index} deleteResource={this.deleteResource}/>
             )
           })
         }
